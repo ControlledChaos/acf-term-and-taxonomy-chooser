@@ -2,11 +2,10 @@
 /**
  * Core plugin class
  *
- * @package    Controlled_Chaos_Plugin
- * @subpackage Includes
+ * @package ACF_Taxonomy_Chooser
  *
- * @since      1.0.0
- * @author     Greg Sweet <greg@ccdzine.com>
+ * @version 1.0.0
+ * @author  Marktime Media, modified by Controlled Chaos Design
  */
 
 namespace ACF_Tax_Chooser;

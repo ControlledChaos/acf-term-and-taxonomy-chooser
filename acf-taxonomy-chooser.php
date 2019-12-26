@@ -2,11 +2,11 @@
 /**
  * ACF Term and Taxonomy Chooser
  *
- * @package     ACF_Taxonomy_Chooser
- * @version     1.0.0
- * @author      Marktime Media, modified by Controlled Chaos Design
- * @link        https://github.com/ControlledChaos/acf-term-and-taxonomy-chooser
- * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
+ * @package ACF_Taxonomy_Chooser
+ * @version 1.0.0
+ * @author  Marktime Media, modified by Controlled Chaos Design
+ * @link    https://github.com/ControlledChaos/acf-term-and-taxonomy-chooser
+ * @license GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
  * Plugin Name:  ACF Term and Taxonomy Chooser
  * Plugin URI:   https://github.com/ControlledChaos/acf-term-and-taxonomy-chooser
