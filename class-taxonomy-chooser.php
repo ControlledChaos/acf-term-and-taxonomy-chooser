@@ -88,7 +88,7 @@ class Taxonomy_Chooser extends \acf_field {
 		 *
 		 * This extends the constructor method of the `acf_field` class.
 		 */
-    	parent::__construct();
+		parent::__construct();
 
 	}
 
