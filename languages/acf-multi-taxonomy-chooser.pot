@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Taxonomy Chooser\n"
+"POT-Creation-Date: 2014-11-01 17:32+0330\n"
+"PO-Revision-Date: 2014-11-01 17:32+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: class-taxonomy-chooser.php:41
+msgid "Term and Taxonomy Chooser"
+msgstr ""
+
+#: class-taxonomy-chooser.php:83
+msgid "Error! Please enter a higher value"
+msgstr ""
+
+#: class-taxonomy-chooser.php:105
+msgid "Select Type"
+msgstr ""
+
+#: class-taxonomy-chooser.php:110
+msgid "Taxonomy"
+msgstr ""
+
+#: class-taxonomy-chooser.php:111
+msgid "Term"
+msgstr ""
+
+#: class-taxonomy-chooser.php:118
+msgid "Choose Allowed Taxonomies"
+msgstr ""
+
+#: class-taxonomy-chooser.php:126
+msgid "All Taxonomies"
+msgstr ""
+
+#: class-taxonomy-chooser.php:127 class-taxonomy-chooser.php:131
+msgid "Allow Null"
+msgstr ""
+
+#: class-taxonomy-chooser.php:128 class-taxonomy-chooser.php:140
+msgid "Return Term Value"
+msgstr ""
+
+#: class-taxonomy-chooser.php:141
+msgid "Specify the returned value on front end (taxonomies always return as slug)"
+msgstr ""
+
+#: class-taxonomy-chooser.php:145
+msgid "ID"
+msgstr ""
+
+#: class-taxonomy-chooser.php:146
+msgid "Slug"
+msgstr ""
+
+#: class-taxonomy-chooser.php:225
+msgid "Select"
+msgstr ""
