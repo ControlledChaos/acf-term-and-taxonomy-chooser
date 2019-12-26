@@ -59,14 +59,14 @@ class Taxonomy_Chooser extends \acf_field {
 		 * Notes: 'multiple' used to be associated with a 'select multiple values field' also
 		 */
 		$this->defaults = [
-            'choices'    => [],
-            'tax_type'   => 0,
+			'choices'    => [],
+			'tax_type'   => 0,
 			'allow_null' => 0,
 			'null_text'  => '',
-            'ui'         => 0,
-            'ajax'       => 0,
-            'type_value' => 1,
-            'multiple'   => 0,
+			'ui'         => 0,
+			'ajax'       => 0,
+			'type_value' => 1,
+			'multiple'   => 0,
 		];
 
 		/**
