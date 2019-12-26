@@ -61,7 +61,8 @@ class Taxonomy_Chooser extends \acf_field {
 		$this->defaults = [
             'choices'    => [],
             'tax_type'   => 0,
-            'allow_null' => 0,
+			'allow_null' => 0,
+			'null_text'  => '',
             'ui'         => 0,
             'ajax'       => 0,
             'type_value' => 1,
@@ -107,7 +108,7 @@ class Taxonomy_Chooser extends \acf_field {
             'name'         => 'tax_type',
             'choices'      => [
                 1 => __( 'Taxonomy', 'acf-taxonomy-chooser' ),
-                0 => __( 'Term', 'acf-taxonomy-chooser' ),
+                0 => __( 'Term', 'acf-taxonomy-chooser' )
 			],
             'layout'       => 'horizontal',
         ] );
@@ -122,16 +123,25 @@ class Taxonomy_Chooser extends \acf_field {
             'multiple'     => 1,
             'ui'           => 1,
             'allow_null'   => 1,
-            'placeholder'  => __( 'All Taxonomies', 'acf-taxonomy-chooser' ),
+            'placeholder'  => __( 'All Taxonomies', 'acf-taxonomy-chooser' )
 		] );
 
-		// Allow_null.
+		// Allow null.
 		acf_render_field_setting( $field, [
 			'label'        => __( 'Allow Null', 'acf-taxonomy-chooser' ),
 			'instructions' => '',
 			'name'         => 'allow_null',
 			'type'         => 'true_false',
-			'ui'           => 1,
+			'ui'           => 1
+		] );
+
+		// Null text.
+		acf_render_field_setting( $field, [
+			'label'        => __( 'Null Text', 'acf-taxonomy-chooser' ),
+			'instructions' => 'Text if no selection is made. Defaults to "Select".',
+			'name'         => 'null_text',
+			'type'         => 'text',
+			'placeholder'  => __( 'Select', 'acf-taxonomy-chooser' )
 		] );
 
          // Term ID or slug.
@@ -142,9 +152,9 @@ class Taxonomy_Chooser extends \acf_field {
             'name'         => 'type_value',
             'choices'      => [
                 1 => __( 'ID', 'acf-taxonomy-chooser' ),
-                0 => __( 'Slug', 'acf-taxonomy-chooser' ),
+                0 => __( 'Slug', 'acf-taxonomy-chooser' )
 			],
-            'layout'	=>	'horizontal',
+            'layout'	   => 'horizontal'
         ] );
 
 	}
@@ -219,9 +229,17 @@ class Taxonomy_Chooser extends \acf_field {
             $field['value'] = '';
         }
 
-        // Placeholder.
+        // Select field placeholder.
         if ( empty( $field['placeholder'] ) ) {
-            $field['placeholder'] = __( 'Select', 'acf-taxonomy-chooser' );
+
+			// Use the null text if set.
+			if ( $field['null_text'] ) {
+				$field['placeholder'] = $field['null_text'];
+
+			// Default placeholder if no null text is set.
+			} else {
+				$field['placeholder'] = __( 'Select', 'acf-taxonomy-chooser' );
+			}
         }
 
 
@@ -331,13 +349,13 @@ class Taxonomy_Chooser extends \acf_field {
 
     	// Null: the "Select" option.
     	if ( $field['allow_null'] ) {
-    	    array_unshift( $els, [ 'type' => 'option', 'value' => '', 'label' => '- ' . $field['placeholder'] . ' -' ] );
+    	    array_unshift( $els, [ 'type' => 'option', 'value' => '', 'label' => $field['placeholder'] ] );
     	}
 
     	// Select element markup.
     	echo '<select ' . acf_esc_attr( $atts ) . '>';
 
-        	// construct html
+        	// Construct HTML.
         	if ( ! empty( $els ) ) {
 
         	    foreach ( $els as $el ) {
@@ -386,4 +404,4 @@ class Taxonomy_Chooser extends \acf_field {
 }
 
 // Run the class.
-new Taxonomy_Chooser();
+$acf_tax_chooser = new Taxonomy_Chooser();
