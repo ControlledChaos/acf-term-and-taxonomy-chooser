@@ -7,6 +7,8 @@ Addon plugin for Advanced Custom Fields to select a term or an entire taxonomy f
 ![PHP tested on version 7.3](https://img.shields.io/badge/PHP-tested%207.3-8892bf.svg?style=flat-square)
 ![ACF 5 Required](https://img.shields.io/badge/ACF%205-Required-00d3ae.svg?style=flat-square)
 
+![Cover image](https://raw.githubusercontent.com/ControlledChaos/acf-term-and-taxonomy-chooser/master/acf-taxonomy-chooser-meta.jpg)
+
 ## Description
 
 Advanced Custom Fields comes with a basic taxonomy field, but this limits you to only showing the terms from one taxonomy at a time. What if you want to show the terms from multiple taxonomies, or select the taxonomy itself?
