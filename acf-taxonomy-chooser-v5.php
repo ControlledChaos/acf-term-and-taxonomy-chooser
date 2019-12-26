@@ -1,8 +1,8 @@
 <?php
 
 class acf_field_taxonomy_chooser extends acf_field {
-	
-	
+
+
 	/*
 	*  __construct
 	*
@@ -15,7 +15,7 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	n/a
 	*  @return	n/a
 	*/
-	
+
 	function __construct() {
 
 		// $test = get_field( 'test_term_select', $_GET['post'] );
@@ -23,32 +23,32 @@ class acf_field_taxonomy_chooser extends acf_field {
 		// echo 'shit<pre>';
 		// print_r( $test );
 		// echo '</pre>';
-		
+
 		/*
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
-		
+
 		$this->name = 'taxonomy-chooser';
-		
-		
+
+
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
-		
-		$this->label = __('Term and Taxonomy Chooser', 'acf-taxonomy-chooser');
-		
-		
+
+		$this->label = __( 'Term and Taxonomy Chooser', 'acf-taxonomy-chooser' );
+
+
 		/*
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
-		
+
 		$this->category = 'choice';
-		
-		
+
+
 		/*
 		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
 		*/
-		
+
 		$this->defaults = array(
             'choices'		=> array(),
             'tax_type'		=> 0,
@@ -60,24 +60,24 @@ class acf_field_taxonomy_chooser extends acf_field {
 		);
 
 		// Notes: 'multiple' used to be associated with a 'select multiple values field' also
-		
-		
+
+
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
-		*  var message = acf._e('taxonomy-chooser', 'error');
+		*  var message = acf._e( 'taxonomy-chooser', 'error' );
 		*/
-		
+
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-taxonomy-chooser'),
+			'error'	=> __( 'Error! Please enter a higher value', 'acf-taxonomy-chooser' ),
 		);
-		
-				
+
+
 		// do not delete!
     	parent::__construct();
-    	
+
 	} // end __construct
-	
-	
+
+
 	/*
 	*  render_field_settings()
 	*
@@ -90,9 +90,9 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$field (array) the $field being edited
 	*  @return	n/a
 	*/
-	
+
 	function render_field_settings( $field ) {
-		
+
 		/*
 		*  acf_render_field_setting
 		*
@@ -105,20 +105,20 @@ class acf_field_taxonomy_chooser extends acf_field {
 
         // choices : Term or Taxonomy
         acf_render_field_setting( $field, array(
-            'label'			=> __('Select Type','taxonomy-chooser'),
+            'label'			=> __( 'Select Type','taxonomy-chooser' ),
             'instructions'	=> '',
             'type'			=> 'select',
             'name'			=> 'tax_type',
             'choices'		=> array(
-                1				=> __("Taxonomy",'taxonomy-chooser'),
-                0				=> __("Term",'taxonomy-chooser'),
+                1				=> __("Taxonomy",'taxonomy-chooser' ),
+                0				=> __("Term",'taxonomy-chooser' ),
                	),
             'layout'	=>	'horizontal',
         ));
 
          // choices : Allowed Taxonomies
         acf_render_field_setting( $field, array(
-            'label'			=> __('Choose Allowed Taxonomies','taxonomy-chooser'),
+            'label'			=> __( 'Choose Allowed Taxonomies','taxonomy-chooser' ),
             'instructions'	=> '',
             'type'			=> 'select',
             'name'			=> 'choices',
@@ -126,38 +126,47 @@ class acf_field_taxonomy_chooser extends acf_field {
             'multiple'		=> 1,
             'ui'			=> 1,
             'allow_null'	=> 1,
-            'placeholder'	=> __("All Taxonomies",'taxonomy-chooser'),
-        ));
+            'placeholder'	=> __("All Taxonomies",'taxonomy-chooser' ),
+		));
+
+		// allow_null
+		acf_render_field_setting( $field, array(
+			'label'			=> __( 'Allow Null?','taxonomy-chooser' ),
+			'instructions'	=> '',
+			'name'			=> 'allow_null',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+		));
 
          // term id or slug
         acf_render_field_setting( $field, array(
-            'label'			=> __('Return Term Value','taxonomy-chooser'),
-            'instructions'	=> __('Specify the returned value on front end (taxonomies always return as slug)','taxonomy-chooser'),
+            'label'			=> __( 'Return Term Value','taxonomy-chooser' ),
+            'instructions'	=> __( 'Specify the returned value on front end (taxonomies always return as slug)','taxonomy-chooser' ),
             'type'			=> 'radio',
             'name'			=> 'type_value',
             'choices'		=> array(
-                1				=> __("ID",'taxonomy-chooser'),
-                0				=> __("Slug",'taxonomy-chooser'),
+                1				=> __( 'ID','taxonomy-chooser' ),
+                0				=> __( 'Slug','taxonomy-chooser' ),
             ),
             'layout'	=>	'horizontal',
         ));
 
         // multiple
         // acf_render_field_setting( $field, array(
-        //     'label'			=> __('Select multiple values?','taxonomy-chooser'),
+        //     'label'			=> __( 'Select multiple values?','taxonomy-chooser' ),
         //     'instructions'	=> '',
         //     'type'			=> 'radio',
         //     'name'			=> 'multiple',
         //     'choices'		=> array(
-        //         1				=> __("Yes",'taxonomy-chooser'),
-        //         0				=> __("No",'taxonomy-chooser'),
+        //         1				=> __("Yes",'taxonomy-chooser' ),
+        //         0				=> __("No",'taxonomy-chooser' ),
         //     ),
         //     'layout'	=>	'horizontal',
         // ));
-	
+
 	} // end render field settings
-	
-	
+
+
 	/*
 	*  render_field()
 	*
@@ -174,7 +183,7 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*/
 
     function render_field( $field ) {
-        
+
         $taxonomies             = array();
         $taxonomies             = acf_get_array( $taxonomies );
         $taxonomies             = acf_get_pretty_taxonomies( $taxonomies );
@@ -186,19 +195,19 @@ class acf_field_taxonomy_chooser extends acf_field {
 
        	if( $field['tax_type'] == 'Term' ){ // select terms
        		 foreach( $slug_name as $k1 => $v1 ) {
-		
+
 	            $found_terms = get_terms( $v1, array( 'hide_empty' => false ));
 		    if (!empty($found_terms) && is_array($found_terms)) {
 			$terms = array_merge($terms, $found_terms);
 		    }
-			 
+
 	            foreach( $taxonomies as $k2 => $v2 ) {
 	                if( $v1 == $k2 ) {
 	                    $slug_name[$k1] = $v2;
 	                }
 	            }
 	        }
-	  
+
 	        foreach( $slug_name as $k1 => $v1 ) {
 	            foreach( $taxonomy_terms as $k2 => $v2 ) {
 	                if( $v1 == $k2 ) {
@@ -214,12 +223,12 @@ class acf_field_taxonomy_chooser extends acf_field {
    			foreach ( $slug_name as $tax_name ) { // only use allowed taxonomies
    				$taxonomies[ $tax_name ] = get_taxonomy( $tax_name );
    			}
-   		    
+
    		    foreach( $taxonomies as $taxonomy ) {
    				$selected_taxonomies[ $taxonomy->name ] = $taxonomy->label;
    			}
        	}
-       
+
         $slug_name = $selected_taxonomies;
 
         // add empty value (allows '' to be selected)
@@ -233,7 +242,7 @@ class acf_field_taxonomy_chooser extends acf_field {
         // placeholder
         if( empty($field['placeholder']) ) {
 
-            $field['placeholder'] = __("Select",'acf');
+            $field['placeholder'] = __("Select",'acf' );
 
         }
 
@@ -258,7 +267,7 @@ class acf_field_taxonomy_chooser extends acf_field {
                 'type'	=> 'hidden',
                 'id'	=> $field['id'],
                 'name'	=> $field['name'],
-                'value'	=> implode(',', $field['value'])
+                'value'	=> implode( ',', $field['value'])
             ));
 
         } elseif( $field['multiple'] ) {
@@ -268,7 +277,7 @@ class acf_field_taxonomy_chooser extends acf_field {
                 'name'	=> $field['name'],
             ));
 
-        } 
+        }
 
 
         // ui
@@ -310,7 +319,7 @@ class acf_field_taxonomy_chooser extends acf_field {
     	                foreach( $v as $k2 => $v2 ) {
 
     	                	$strip_v2_hyphen = preg_replace( '#-\s?#', '', $v2 ); // Child categories have hyphens before the name, we need to remove them in order to match them
-    	                	
+
     	                	if ($field['type_value']) { // value = term ID
 
     	                		foreach ($terms as $key => $val) {
@@ -320,7 +329,7 @@ class acf_field_taxonomy_chooser extends acf_field {
     	                			    $els[] = array( 'type' => 'option', 'value' => $val->term_id, 'label' => $v2 , 'selected' => $slct = ($val->term_id == $field['value'] ? "selected": "") );
 
     	                			}
-	
+
     	                		}
 
     	                	} else { // value = term slug
@@ -355,10 +364,10 @@ class acf_field_taxonomy_chooser extends acf_field {
 
     	    array_unshift( $els, array( 'type' => 'option', 'value' => '', 'label' => '- ' . $field['placeholder'] . ' -' ) );
 
-    	}		
-    	        
+    	}
+
     	// html
-    	echo '<select ' . acf_esc_attr( $atts ) . '>';	
+    	echo '<select ' . acf_esc_attr( $atts ) . '>';
 
         	// construct html
         	if( !empty($els) ) {
@@ -366,17 +375,17 @@ class acf_field_taxonomy_chooser extends acf_field {
         	    foreach( $els as $el ) {
 
         	        // extract type
-        	        $type = acf_extract_var($el, 'type');
+        	        $type = acf_extract_var($el, 'type' );
 
 
         	        if( $type == 'option' ) {
 
         	            // get label
-        	            $label = acf_extract_var($el, 'label');
+        	            $label = acf_extract_var($el, 'label' );
 
 
         	            // validate selected
-        	            if( acf_extract_var($el, 'selected') ) {
+        	            if( acf_extract_var($el, 'selected' ) ) {
 
         	                $el['selected'] = 'selected';
 
@@ -392,10 +401,10 @@ class acf_field_taxonomy_chooser extends acf_field {
         	}
 
     	echo '</select>';
-	
+
     } // end render field
 
-		
+
 	/*
 	*  input_admin_enqueue_scripts()
 	*
@@ -417,11 +426,11 @@ class acf_field_taxonomy_chooser extends acf_field {
 
         // register & include JS
         wp_register_script( 'acf-input-taxonomy-chooser', "{$dir}js/input.js" );
-        wp_enqueue_script('acf-input-taxonomy-chooser');
+        wp_enqueue_script( 'acf-input-taxonomy-chooser' );
 
     }
-	
-	
+
+
 	/*
 	*  input_admin_head()
 	*
@@ -437,21 +446,21 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*/
 
 	/*
-		
+
 	function input_admin_head() {
-	
-		
-		
+
+
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
    	*  input_form_data()
    	*
    	*  This function is called once on the 'input' page between the head and footer
-   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and 
+   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and
    	*  'acf/input_admin_head' actions because ACF did not know it was going to be used. These situations are
    	*  seen on comments / user edit forms on the front end. This function will always be called, and includes
    	*  $args that related to the current screen such as $args['post_id']
@@ -463,18 +472,18 @@ class acf_field_taxonomy_chooser extends acf_field {
    	*  @param	$args (array)
    	*  @return	n/a
    	*/
-   	
+
    	/*
-   	
+
    	function input_form_data( $args ) {
-	   	
-		
-	
+
+
+
    	}
-   	
+
    	*/
-	
-	
+
+
 	/*
 	*  input_admin_footer()
 	*
@@ -490,16 +499,16 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*/
 
 	/*
-		
+
 	function input_admin_footer() {
-	
-		
-		
+
+
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  field_group_admin_enqueue_scripts()
 	*
@@ -515,14 +524,14 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*/
 
 	/*
-	
+
 	function field_group_admin_enqueue_scripts() {
-		
+
 	}
-	
+
 	*/
 
-	
+
 	/*
 	*  field_group_admin_head()
 	*
@@ -538,11 +547,11 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*/
 
 	/*
-	
+
 	function field_group_admin_head() {
-	
+
 	}
-	
+
 	*/
 
 
@@ -560,18 +569,18 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-	
+
 	/*
-	
+
 	function load_value( $value, $post_id, $field ) {
-		
+
 		return $value;
-		
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  update_value()
 	*
@@ -586,18 +595,18 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-	
+
 	/*
-	
+
 	function update_value( $value, $post_id, $field ) {
-		
+
 		return $value;
-		
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  format_value()
 	*
@@ -613,35 +622,35 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*
 	*  @return	$value (mixed) the modified value
 	*/
-		
+
 	/*
-	
+
 	function format_value( $value, $post_id, $field ) {
-		
+
 		// bail early if no value
 		if( empty($value) ) {
-		
+
 			return $value;
-			
+
 		}
-		
-		
+
+
 		// apply setting
-		if( $field['font_size'] > 12 ) { 
-			
+		if( $field['font_size'] > 12 ) {
+
 			// format the value
 			// $value = 'something';
-		
+
 		}
-		
-		
+
+
 		// return
 		return $value;
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  validate_value()
 	*
@@ -659,33 +668,33 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$input (string) the corresponding input name for $_POST value
 	*  @return	$valid
 	*/
-	
+
 	/*
-	
+
 	function validate_value( $valid, $value, $field, $input ){
-		
+
 		// Basic usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
 			$valid = false;
 		}
-		
-		
+
+
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
-			$valid = __('The value is too little!','acf-taxonomy-chooser'),
+			$valid = __( 'The value is too little!','acf-taxonomy-chooser' ),
 		}
-		
-		
+
+
 		// return
 		return $valid;
-		
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  delete_value()
 	*
@@ -700,18 +709,18 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$key (string) the $meta_key which the value was deleted
 	*  @return	n/a
 	*/
-	
+
 	/*
-	
+
 	function delete_value( $post_id, $key ) {
-		
-		
-		
+
+
+
 	}
-	
+
 	*/
-	
-	
+
+
 	/*
 	*  load_field()
 	*
@@ -719,23 +728,23 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*
 	*  @type	filter
 	*  @date	23/01/2013
-	*  @since	3.6.0	
+	*  @since	3.6.0
 	*
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$field
 	*/
-	
+
 	/*
-	
+
 	function load_field( $field ) {
-		
+
 		return $field;
-		
-	}	
-	
+
+	}
+
 	*/
-	
-	
+
+
 	/*
 	*  update_field()
 	*
@@ -748,18 +757,18 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$field
 	*/
-	
+
 	/*
-	
+
 	function update_field( $field ) {
-		
+
 		return $field;
-		
-	}	
-	
+
+	}
+
 	*/
-	
-	
+
+
 	/*
 	*  delete_field()
 	*
@@ -772,21 +781,19 @@ class acf_field_taxonomy_chooser extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	n/a
 	*/
-	
+
 	/*
-	
+
 	function delete_field( $field ) {
-		
-		
-		
-	}	
-	
+
+
+
+	}
+
 	*/
-	
+
 }
 
 
 // create field
 new acf_field_taxonomy_chooser();
-
-?>
