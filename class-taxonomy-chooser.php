@@ -100,30 +100,30 @@ class Taxonomy_Chooser extends \acf_field {
 	 */
 	function render_field_settings( $field ) {
 
-        // Term or taxonomy.
-        acf_render_field_setting( $field, [
-            'label'        => __( 'Select Type', 'acf-taxonomy-chooser' ),
-            'instructions' => '',
-            'type'         => 'select',
-            'name'         => 'tax_type',
-            'choices'      => [
-                1 => __( 'Taxonomy', 'acf-taxonomy-chooser' ),
-                0 => __( 'Term', 'acf-taxonomy-chooser' )
+		// Term or taxonomy.
+		acf_render_field_setting( $field, [
+			'label'        => __( 'Select Type', 'acf-taxonomy-chooser' ),
+			'instructions' => '',
+			'type'         => 'select',
+			'name'         => 'tax_type',
+			'choices'      => [
+				1 => __( 'Taxonomy', 'acf-taxonomy-chooser' ),
+				0 => __( 'Term', 'acf-taxonomy-chooser' )
 			],
-            'layout'       => 'horizontal',
-        ] );
+			'layout'       => 'horizontal',
+		] );
 
-         // Allowed taxonomies.
-        acf_render_field_setting( $field, [
-            'label'        => __( 'Choose Allowed Taxonomies', 'acf-taxonomy-chooser' ),
-            'instructions' => '',
-            'type'         => 'select',
-            'name'         => 'choices',
-            'choices'      => acf_get_pretty_taxonomies(),
-            'multiple'     => 1,
-            'ui'           => 1,
-            'allow_null'   => 1,
-            'placeholder'  => __( 'All Taxonomies', 'acf-taxonomy-chooser' )
+			// Allowed taxonomies.
+		acf_render_field_setting( $field, [
+			'label'        => __( 'Choose Allowed Taxonomies', 'acf-taxonomy-chooser' ),
+			'instructions' => '',
+			'type'         => 'select',
+			'name'         => 'choices',
+			'choices'      => acf_get_pretty_taxonomies(),
+			'multiple'     => 1,
+			'ui'           => 1,
+			'allow_null'   => 1,
+			'placeholder'  => __( 'All Taxonomies', 'acf-taxonomy-chooser' )
 		] );
 
 		// Allow null.
@@ -144,18 +144,18 @@ class Taxonomy_Chooser extends \acf_field {
 			'placeholder'  => __( 'Select', 'acf-taxonomy-chooser' )
 		] );
 
-         // Term ID or slug.
-        acf_render_field_setting( $field, [
-            'label'        => __( 'Return Term Value', 'acf-taxonomy-chooser' ),
-            'instructions' => __( 'Specify the returned value on front end (taxonomies always return as slug)', 'acf-taxonomy-chooser' ),
-            'type'         => 'radio',
-            'name'         => 'type_value',
-            'choices'      => [
-                1 => __( 'ID', 'acf-taxonomy-chooser' ),
-                0 => __( 'Slug', 'acf-taxonomy-chooser' )
+			// Term ID or slug.
+		acf_render_field_setting( $field, [
+			'label'        => __( 'Return Term Value', 'acf-taxonomy-chooser' ),
+			'instructions' => __( 'Specify the returned value on front end (taxonomies always return as slug)', 'acf-taxonomy-chooser' ),
+			'type'         => 'radio',
+			'name'         => 'type_value',
+			'choices'      => [
+				1 => __( 'ID', 'acf-taxonomy-chooser' ),
+				0 => __( 'Slug', 'acf-taxonomy-chooser' )
 			],
-            'layout'	   => 'horizontal'
-        ] );
+			'layout'	   => 'horizontal'
+		] );
 
 	}
 
